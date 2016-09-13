@@ -1,9 +1,17 @@
 # LoginDoc
 
-Personal document management has been developed to meet the needs, has a simple structure your files copy doc folder and enjoy
+Personal document management
 
-Note: Please edit `docs/index.html` and edit list
+## TODO
 
+- [x] Add document
+- [x] Remove document
+- [ ] Drag and Drop (FIXME)
+- [x] List new document layout
+- [x] Upload document for zip file
+- [x] Improve Layout and Management
+- [x] Improve Security
+- [x] Server Configuration
 
 ## Requirements
 
@@ -20,6 +28,11 @@ cd LoginDoc
 uwsgi --socket 127.0.0.1:3031 --wsgi-file wsgi.py --callable application --processes 4 --threads 2 --stats 127.0.0.1:9191
 ```
 
+
 ## LICENSE
 
 [MIT](https://github.com/MertcanGokgoz/LoginDoc/blob/master/LICENSE)
+
+### Contributors
+
+Furkan Kalkan

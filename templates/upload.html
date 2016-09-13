@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mertcan GOKGOZ">
+
+    <title>Admin Panel</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link href="/static/sb-admin.css" rel="stylesheet">
+    <script src="/static/upload.js"></script>
+    <style>
+        /* layout.css Style */
+        .upload-drop-zone {
+            height: 200px;
+            border-width: 2px;
+            margin-bottom: 20px;
+        }
+
+        /* skin.css Style*/
+        .upload-drop-zone {
+            color: #ccc;
+            border-style: dashed;
+            border-color: #ccc;
+            line-height: 200px;
+            text-align: center
+        }
+
+        .upload-drop-zone.drop {
+            color: #222;
+            border-color: #222;
+        }
+    </style>
+    <script>
+        $('#main_form').validate({
+            rules: {},
+            messages: {},
+            submitHandler: function () {
+                return false
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/Main_page">Dashboard</a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/settings"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li>
+                    <a href="/Main_page"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="/list"><i class="fa fa-fw fa-bar-chart-o"></i> Documents</a>
+                </li>
+                <li class="active">
+                    <a href="/document/add"><i class="fa fa-fw fa-table"></i> Add Document</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Upload Files</strong>
+                        <small>Add document</small>
+                    </div>
+                    <div class="panel-body">
+                        <form enctype="multipart/form-data" action="/document/add" method="POST" id="main_form">
+                            <div class="form-group">
+                                <label for="title">Document Title</label>
+                                <input type="text" name="title" id="title" class="form-control"
+                                       placeholder="Enter title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Document Description</label>
+                                <input type="text" name="description" id="description" class="form-control"
+                                       placeholder="Enter description" required>
+                            </div>
+                            <h4>Select files from your computer</h4>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <input type="file" name="file" id="file" required>
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload
+                                    files
+                                </button>
+                            </div>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                        </form>
+
+                        <!-- Drop Zone -->
+                        <h4>Or drag and drop files below</h4>
+                        <div class="upload-drop-zone" id="drop-zone">
+                            Just drag and drop files here
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

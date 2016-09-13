@@ -35,17 +35,19 @@
                 </button>
             </div>
             <div id="div-forms">
-                <form id="login-form" method="post" action="">
+                <form id="login-form" method="post" action="/login">
                     <div class="modal-body">
                         <div id="div-login-msg">
                             <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
                             <span id="text-login-msg">Please enter username and password</span>
                         </div>
+                        {{ form.hidden_tag() }}
                         <input id="login_username" name="login_username" class="form-control" type="text"
                                placeholder="Username" required>
                         <input id="login_password" name="login_password" class="form-control" type="password"
                                placeholder="Password" required>
-                        <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+                        <input name=auth_token type=hidden value="{{ auth_token() }}">
+                        <br>
                         {{ form.recap() }}
                     </div>
                     <div class="modal-footer">
