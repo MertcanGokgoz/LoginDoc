@@ -29,7 +29,7 @@ application.config.update(
     SESSION_KEY_PREFIX="login_doc:",
     RECAPTCHA_OPTIONS={'theme': 'dark'},
     RECAPTCHA_PUBLIC_KEY="6Le61ykTAAAAACmvsDyHdzYHei_xkS4fNjEYFgmO",
-    RECAPTCHA_PRIVATE_KEY="",
+    RECAPTCHA_PRIVATE_KEY="6Le61ykTAAAAABEXwzMb9_r_-J8kr9VfoNa0jWk_",
     UPLOAD_FOLDER='/tmp/'
 )
 
